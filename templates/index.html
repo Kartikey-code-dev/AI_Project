@@ -17,7 +17,7 @@
 
 <h1>Plan Your Journey</h1>
 
-<p>Enter travel details and let AI generate your trip</p>
+<p id="type-label">Enter travel details and let AI generate your trip</p>
 
 <div class="travel-form">
 
@@ -27,7 +27,7 @@
 
 <input id="travelers" type="number" placeholder="Travelers">
 
-<input id="budget" type="number" placeholder="Budget ($)">
+<input id="budget" type="number" placeholder="Budget (₹)">
 
 <input id="days" type="number" placeholder="Travel days">
 
@@ -37,6 +37,18 @@
 
 </div>
 
+<script>
+    // read type from query string and store locally
+    const params = new URLSearchParams(window.location.search);
+    const ttype = params.get('type');
+    if (ttype) {
+        localStorage.setItem('travelType', ttype);
+        const label = document.getElementById('type-label');
+        if (label) {
+            label.textContent = `You chose ${ttype.replace(/\b\w/g, c=>c.toUpperCase())} Travel – enter the rest of your details`;
+        }
+    }
+</script>
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>

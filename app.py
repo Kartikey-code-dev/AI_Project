@@ -29,11 +29,11 @@ def plan():
     travelers = int(data["travelers"])
     budget = float(data["budget"])
     days = int(data["days"])
+    travel_type = data.get("travelType","city")
 
-    result = plan_trip(source,destination,budget,travelers,days)
+    result = plan_trip(source,destination,budget,travelers,days, travel_type)
 
     return jsonify(result)
-
 
 if __name__ == "__main__":
     print("Server running at http://127.0.0.1:5000")

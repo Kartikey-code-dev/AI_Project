@@ -22,27 +22,32 @@ color:white;
 }
 
 .hero{
-
-text-align:center;
-
-margin-top:80px;
-
+    text-align:center;
+    margin-top:80px;
 }
 
-.hero h1{
-
-font-size:54px;
-
-margin-bottom:10px;
-
+.headline{
+    font-size:64px;
+    margin-bottom:10px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    animation: fadeInDown 1s ease;
 }
 
-.hero p{
+.subhead{
+    font-size:20px;
+    opacity:0.9;
+    animation: fadeInUp 1s ease;
+}
 
-font-size:18px;
+@keyframes fadeInDown {
+    from {opacity:0; transform:translateY(-20px);}
+    to {opacity:1; transform:translateY(0);}    
+}
 
-opacity:0.9;
-
+@keyframes fadeInUp {
+    from {opacity:0; transform:translateY(20px);}
+    to {opacity:1; transform:translateY(0);}    
 }
 
 /* TRAVEL CARDS */
@@ -86,11 +91,31 @@ transition:0.3s;
 }
 
 .travel-card:hover{
+    transform:translateY(-10px) scale(1.05);
+    background:rgba(255,255,255,0.25);
+}
 
-transform:translateY(-10px) scale(1.05);
-
-background:rgba(255,255,255,0.25);
-
+/* mouse-follow shine */
+.travel-card{
+    position:relative;
+    overflow:hidden;
+}
+.travel-card::before{
+    content:'';
+    position:absolute;
+    top:var(--mouse-y);
+    left:var(--mouse-x);
+    width:0;
+    height:0;
+    pointer-events:none;
+    background:rgba(255,255,255,0.3);
+    border-radius:50%;
+    transform:translate(-50%, -50%);
+    transition:width 0.3s ease, height 0.3s ease;
+}
+.travel-card:hover::before{
+    width:200px;
+    height:200px;
 }
 
 .icon{
@@ -99,6 +124,19 @@ font-size:40px;
 
 margin-bottom:10px;
 
+}
+
+/* footer */
+.landing-footer{
+    margin-top:60px;
+    font-size:14px;
+    opacity:0.7;
+    animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+    from {opacity:0;}
+    to {opacity:1;}
 }
 
 /* FORM PAGE */

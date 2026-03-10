@@ -14,46 +14,53 @@
 <body class="landing-body">
 
 <div class="hero">
-
-<h1>AI Travel Planner ✈</h1>
-
-<p>Plan intelligent journeys powered by AI</p>
-
+    <h1 class="headline">AI Travel Planner ✈</h1>
+    <p class="subhead">Plan intelligent journeys powered by AI</p>
 </div>
 
 <div class="travel-container">
+    <a href="/search?type=city" class="travel-card" data-type="city">
+        <div class="icon">🏙</div>
+        <h2>City Travel</h2>
+        <p>Discover places within the same city</p>
+    </a>
 
-<a href="/search" class="travel-card">
+    <a href="/search?type=state" class="travel-card" data-type="state">
+        <div class="icon">🚗</div>
+        <h2>State Travel</h2>
+        <p>Travel between cities or states</p>
+    </a>
 
-<div class="icon">🏙</div>
-
-<h2>City Travel</h2>
-
-<p>Discover places within the same city</p>
-
-</a>
-
-<a href="/search" class="travel-card">
-
-<div class="icon">🚗</div>
-
-<h2>State Travel</h2>
-
-<p>Travel between cities or states</p>
-
-</a>
-
-<a href="/search" class="travel-card">
-
-<div class="icon">✈</div>
-
-<h2>International Travel</h2>
-
-<p>Plan trips across countries</p>
-
-</a>
-
+    <a href="/search?type=international" class="travel-card" data-type="international">
+        <div class="icon">✈</div>
+        <h2>International Travel</h2>
+        <p>Plan trips across countries</p>
+    </a>
 </div>
+
+<footer class="landing-footer">
+    <p>© 2026 AI Travel Planner. Ready to explore?</p>
+</footer>
+
+<!-- small script to add card ripple effect and background animation -->
+<script>
+    document.querySelectorAll('.travel-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', x + 'px');
+            card.style.setProperty('--mouse-y', y + 'px');
+        });
+    });
+
+    // Animate background gradient
+    let hue = 180;
+    setInterval(() => {
+        hue = (hue + 0.2) % 360;
+        document.body.style.background = `linear-gradient(135deg, hsl(${hue},70%,40%), hsl(${(hue+60)%360},80%,60%))`;
+    }, 50);
+</script>
 
 </body>
 
